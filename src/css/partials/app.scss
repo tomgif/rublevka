@@ -1,0 +1,360 @@
+$bgColor: #f6f6f6;
+$bgDark: #000;
+$secondary: #9a8960;
+
+@font-face {
+	font-family: 'PFDinDisplayPro-Regular';
+	src: url('../fonts/PFDinDisplayPro-Regular.eot');
+	src: local('☺'), url('../fonts/PFDinDisplayPro-Regular.woff') format('woff'),
+	url('../fonts/PFDinDisplayPro-Regular.ttf') format('truetype'),
+	url('../fonts/PFDinDisplayPro-Regular.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'FreeSet';
+	src: url('../fonts/FreeSet Cyrillic.eot');
+	src: local('☺'), url('../fonts/FreeSet Cyrillic.woff') format('woff'),
+	url('../fonts/FreeSet Cyrillic.ttf') format('truetype'),
+	url('../fonts/FreeSet Cyrillic.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+*{box-sizing: border-box}
+html, .page{
+	min-height: 100%;
+	height: 100%;
+	font: 14px PFDinDisplayPro-Regular;
+}
+
+.page{
+	background: $bgColor;
+}
+
+.wrapper{
+	min-height: 100%;
+	height: auto;
+	padding-bottom: 316px;
+}
+
+.inner{
+	@extend .container;
+}
+
+.header{
+	background: $bgDark;
+	height: 170px;
+	box-shadow: 0 1px 100px 0 #bbbab9;
+	.logo__wrapper{
+		background: #fff;
+		height: 117px;
+		padding: 25px 0;
+	}
+	.nav{
+		height: 53px;	
+	}
+}
+.content{
+	@extend .container;
+	&__inner{
+		@include make-row();
+	}
+	&__wrapper{
+		@include make-md-column(9,0);
+	}
+	.sidebar{
+		@include make-md-column(3,0);
+	}
+}
+.footer{
+	height: 316px;
+	margin-top: -316px;
+	.inner{
+		border-top: 1px dotted #d0c9b9;
+	}
+}
+
+.logo{
+	&--top{
+		@include make-md-column(3,0);
+		img{max-width: 100%}
+	}
+}
+.search{
+	&--top{
+		@include make-md-column(6,0);
+		input[type=text]{
+			@extend .form-control;
+			border-radius: 0;
+		}
+	}
+}
+.contact{
+	&--top{
+		@extend .text-right;
+		@include make-md-column(3,0);
+		letter-spacing: 1px;
+		span{
+			color: $secondary;
+			font-size: 12px;
+			font-style: italic;
+		}
+		a{
+			color: $bgDark;
+			font-size: 20px;
+			&:link, &:visited, &:hover, &:active{
+				text-decoration: none;
+				color: $bgDark;
+			}
+		}
+	}
+}
+.menu{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	&--main{
+		color: #fff;
+		&__item{
+			display: block;
+			float: left;
+			a{
+				@extend .text-uppercase;
+				text-decoration: none;
+				display: block;
+				padding: 18px 30px;
+				color: #fff;
+				letter-spacing: 4px;
+				&:hover{
+					color: $bgDark;
+					background: #fff;
+				}
+			}
+		}
+	}
+}
+
+.sort{
+	padding-top: 100px;
+	padding-left: 25px;
+	strong{
+		@extend .text-uppercase;
+		letter-spacing: 5px;
+		font-size: 14px;
+	}
+	&__wrapper{
+		margin-top: 10px;
+	}
+	&__item{
+		width: 100%;
+		color: $secondary;
+		display: block;
+		padding: 5px 0;
+		&:before{
+			content: "-";
+			margin-right: 10px;
+		}
+		&:link, &:visited, &:hover, &:active{
+			color: $secondary;
+			text-decoration: none;
+		}
+		&:hover, &:visited{
+			opacity: .7;
+		}
+	}
+	hr{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+}
+
+.catalog{
+	&__item{
+		padding: 15px;
+		img{max-width: 100%}
+		&--third{
+			@include make-md-column(4);
+			border-right: 1px solid #e5e5e5;
+			&:last-child{border-right: 0}
+			.offer{
+				background: #fff;
+				box-shadow: 0 0 50px 0 lightgray;
+				.description{
+					padding: 15px;
+					&__wrapper{
+						border-bottom: 1px dotted $secondary;
+						padding-bottom: 10px;
+					}
+					&__options{
+						@include clearfix;
+						padding: 15px 0;
+						.option{
+							font-weight: bold;
+							padding-left: 20px;
+							background-repeat: no-repeat;
+							background-position: left center;
+							margin-right: 10px;
+							float: left;
+							display: block;
+							height: 20px;
+							font-size: 12px;
+							padding-top: 5px;
+							&:last-child{margin-right: 0}
+							&--tree{
+								background-image: url(../img/tree.png);
+								background-size: 17px 16px;
+							}
+							&--house{
+								background-image: url(../img/house.png);
+								background-size: 19px 14px;
+							}
+							&--hammer{
+								background-image: url(../img/hammer.png);
+								background-size: 17px 15px;
+							}
+						}
+					}
+					.title{
+						padding: 5px 10px;
+						color: $secondary;
+						font-size: 18px;
+					}
+					.price{
+						padding: 5px 10px;
+						letter-spacing: 5px;
+						font-size: 16px;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+		&--full{
+			@include make-md-column(12);
+			.image{
+				box-shadow: 0 0 50px 0 lightgray;
+				position: relative;
+				padding-bottom: 150px;
+				height: 100%;
+				&:before{
+					content: "";
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					@include linear-gradient(transparent, transparent, transparent, black, black);
+					opacity: 1;
+					transition: opacity .5s ease;
+				}
+				&:hover{
+					&:before{
+						opacity: .6;
+						transition: opacity .5s ease;
+					}
+				}
+				&__description{
+					margin-top: -150px;
+				}
+				.description__wrapper{
+					@extend .text-center;
+					position: absolute;
+					left: 0;
+					right: 0;
+					.title{
+						@extend .text-uppercase;
+						font-size: 50px;
+						color: #fff;
+						font-family: 'FreeSet';
+						letter-spacing: 15px;
+					}
+					.promo{
+						color: $secondary;
+						text-decoration: none;
+						letter-spacing: 1px;
+						line-height: 2;
+						padding-top: 10px;
+					}
+				}
+			}
+		}
+	}
+	&__row{
+		@include clearfix();
+		border-bottom: 1px solid #e5e5e5;
+		&:first-child{
+			.catalog__item{
+				padding-top: 50px;
+			}
+		}
+	}
+}
+
+.journal{
+	.title{
+		@extend .text-right;
+		padding: 25px 75px;
+	}
+	&__wrapper{
+		@include clearfix();
+	}
+	&__item{
+		@include make-row();
+		padding: 15px;
+		.image{
+			@include make-md-column(6);
+			img{
+				max-width: 100%;
+			}
+		}
+		.description{
+			@include make-md-column(6);
+			@include clearfix();
+			position: relative;
+			img{margin-right: 10px}
+			.category{
+				@extend .text-uppercase;
+				color: $secondary;
+				padding-bottom: 20px;
+				border-bottom: 1px dotted $secondary;
+				padding: 35px 35px 25px 30px;
+			}
+			.title{
+				
+			}
+			.article{
+				padding: 15px 0 50px 30px;
+				.author{
+					@extend .text-uppercase;
+					color: $secondary;
+					padding: 10px 0;
+					letter-spacing: 1px;
+				}
+				p{
+					color: #615944;
+					padding-left: 65px;
+					font-size: 13px;
+				}
+			}
+			&__wrapper{
+				border-left: 1px dotted $secondary;
+				position: absolute;
+				top: -50px;
+			}
+		}
+	}
+	&__inner{
+		@include make-md-column(12);
+	}
+	&__content{
+		overflow: hidden;
+		@include make-row();
+		@include clearfix();
+		background: #fff;
+		box-shadow: 0 0 60px 0 #d3d3d3;
+		padding: 45px 55px;
+	}
+}
